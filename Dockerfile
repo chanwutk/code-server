@@ -32,6 +32,16 @@ RUN sudo apt install -y apt-transport-https
 RUN sudo apt update
 RUN sudo apt install -y code
 
+RUN code --install-extension ms-vscode-remote.remote-ssh
+RUN code --install-extension ms-python.python
+RUN code --install-extension ms-python.python-pylance
+RUN code --install-extension vscodevim.vim
+RUN code --install-extension zhuangtongfa.material-theme
+RUN code --install-extension dbaeumer.vscode-eslint
+
+RUN rm -rf /home/coder/.local/share/code-server/extensions
+RUN ln -s /home/coder/.vscode/extensions /home/coder/.local/share/code-server/extensions
+
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
