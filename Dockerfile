@@ -22,26 +22,13 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # You can add custom software and dependencies for your environment below
 # -----------
 
-RUN sudo apt-get install -y wget gpg
-RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-RUN sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-RUN sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-RUN rm -f packages.microsoft.gpg
-
-RUN sudo apt install -y apt-transport-https
-RUN sudo apt update
-RUN sudo apt install -y code
-
-RUN code --install-extension ms-python.python
-RUN code --install-extension zhuangtongfa.material-theme
-RUN code --install-extension dbaeumer.vscode-eslint
-
-
-RUN cp /home/coder/.vscode/extensions/* /home/coder/.local/share/code-server/extensions/
-
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension zhuangtongfa.material-theme
+RUN code-server --install-extension dbaeumer.vscode-eslint
+
 RUN wget https://github.com/VSCodeVim/Vim/releases/download/v1.23.2/vim-1.23.2.vsix
 RUN code-server --install-extension ./vim-1.23.2.vsix
 RUN rm ./vim-1.23.2.vsix
