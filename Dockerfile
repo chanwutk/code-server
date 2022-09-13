@@ -29,7 +29,7 @@ RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension zhuangtongfa.material-theme
 RUN code-server --install-extension dbaeumer.vscode-eslint
 
-RUN wget https://github.com/VSCodeVim/Vim/releases/download/v1.23.2/vim-1.23.2.vsix
+RUN curl https://github.com/VSCodeVim/Vim/releases/download/v1.23.2/vim-1.23.2.vsix --output vim-1.23.2.vsix
 RUN code-server --install-extension ./vim-1.23.2.vsix
 RUN rm ./vim-1.23.2.vsix
 
