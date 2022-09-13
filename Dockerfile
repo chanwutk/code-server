@@ -34,7 +34,6 @@ RUN sudo apt install -y code
 
 RUN code --install-extension ms-vscode-remote.remote-ssh
 RUN code --install-extension ms-python.python
-RUN code --install-extension ms-python.python-pylance
 RUN code --install-extension vscodevim.vim
 RUN code --install-extension zhuangtongfa.material-theme
 RUN code --install-extension dbaeumer.vscode-eslint
