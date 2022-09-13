@@ -33,6 +33,10 @@ RUN curl https://github.com/VSCodeVim/Vim/releases/download/v1.23.2/vim-1.23.2.v
 RUN code-server --install-extension ./vim-1.23.2.vsix
 RUN rm ./vim-1.23.2.vsix
 
+RUN curl -L https://raw.githubusercontent.com/chanwutk/code-server-init/main/ms-vscode-remote.remote-ssh-0.47.0.vsix?token=GHSAT0AAAAAABYV6QSQOJ2S2C47G7MXABE2YZAD5AQ --output remote-ssh.vsix
+RUN code-server --install-extension ./remote-ssh.vsix
+RUN rm ./remote-ssh.vsix
+
 # Install apt packages:
 # RUN sudo apt-get install -y ubuntu-make
 
